@@ -54,6 +54,11 @@ export function getBackend(): Backend | null {
       return new HyprBackend();
     }
 
+    if (desktop === 'sway') {
+      const { SwayBackend } = require('./linux/sway/backend');
+      return new SwayBackend();
+    }
+
     if (session === 'x11') {
       const { X11Backend } = require('./linux/x11/backend');
       return new X11Backend();
